@@ -61,11 +61,10 @@ def color_first_move_out_line(game, moves_rep_in):
     """
     if game.white and len(moves_rep_in) % 3 == 0:
         color = "red"
-    elif not game.white and len(moves_rep_in) % 3 == 1:
+    elif not game.white and len(moves_rep_in) % 3 == 2:
         color = "red"
     else:
         color = "yellow"
-
     return color
 
 
