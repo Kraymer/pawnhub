@@ -1,0 +1,4 @@
+click
+confuse
+rich
+# git+https://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@github.com/Kraymer/pawnstore@main
