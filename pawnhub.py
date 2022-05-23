@@ -23,7 +23,6 @@ import display
 APP_TEMP_DIR = os.path.join(tempfile.gettempdir(), "pawnhub")
 
 logger = logging.getLogger(__name__)
-console = Console()
 table = Table(
     collapse_padding=True,
     expand=True,
@@ -184,7 +183,7 @@ def find(game, search):
         return True
 
 
-def display_games(store, search, repertoire):
+def display_games(store, search, repertoire, color):
     table.add_column("Side/site")
     table.add_column("Result")
     table.add_column("Termination")
@@ -196,6 +195,8 @@ def display_games(store, search, repertoire):
     for game in list(store):
         if not search or find(game, search):
             display_game(game, repertoire)
+
+    console = Console(force_terminal=color)
     console.print(table)
 
 
@@ -261,6 +262,7 @@ PATH_OR_URL = PathOrUrlType()
 @click.command(context_settings=dict(help_option_names=["-h", "--help"]), help="yadda")
 @click.option("-c", "--chesscom_user", default=None)
 @click.option("-l", "--lichess_user", default=None)
+@click.option("--color", default=None, help="Always color terminal output")
 @click.option(
     "-s",
     "--search",
@@ -292,6 +294,7 @@ def cli(
     chesscom_user=None,
     lichess_user=None,
     search=None,
+    color=False,
     white_pgn_file=None,
     black_pgn_file=None,
 ):
@@ -303,7 +306,7 @@ def cli(
     store = pawnstore(chesscom_user, lichess_user)
     repertoire = build_repertoire(white_pgn_file, black_pgn_file)
 
-    display_games(store, search, repertoire)
+    display_games(store, search, repertoire, color)
 
 
 if __name__ == "__main__":
