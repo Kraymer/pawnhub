@@ -7,6 +7,8 @@ import shutil
 import subprocess
 import random
 
+from enum import Enum
+
 import chess.pgn
 import requests
 from rich.console import Console
@@ -34,6 +36,11 @@ table = Table(
 )
 
 
+class MoveStatus(Enum):
+    FORGET = 1
+    OUT_OF_REP = 2
+
+
 def numerize_turns(lst):
     """Add turn indicators.
     ["e4", "e5"] => ["1.", "e4", "e5"]
@@ -55,17 +62,15 @@ def sanitize_prefix(prefix):
     return prefix
 
 
-def color_first_move_out_line(game, moves_rep_in):
-    """Return color of first move outside preparation : red if different of the
-    one in the repertoire, yellow if no next move in repertoire.
-    """
+def status_first_move_out_line(game, moves_rep_in):
+    """Return status of first move outside preparation"""
     if game.white and len(moves_rep_in) % 3 == 0:
-        color = "red"
+        status = MoveStatus.FORGET
     elif not game.white and len(moves_rep_in) % 3 == 2:
-        color = "red"
+        status = MoveStatus.FORGET
     else:
-        color = "yellow"
-    return color
+        status = MoveStatus.OUT_OF_REP
+    return status
 
 
 def categorize_from_repertoire(moves, line):
@@ -96,17 +101,18 @@ def display_game_moves(game, line):
         if not moves_rep_out:
             return moves_str
         idx = 0
-        color_1st_move_out = color_first_move_out_line(game, moves_rep_in)
+        status_first_move_out = status_first_move_out_line(game, moves_rep_in)
         if moves_str:
             moves_str.append(" ")
         while True:
             moves_str.append(
-                moves_rep_out[idx] + " ", style=f"{color_1st_move_out} not dim"
+                moves_rep_out[idx] + " ",
+                style=f'{"red" if status_first_move_out == MoveStatus.FORGET else "yellow"} not dim',
             )
             if not moves_rep_out[idx].endswith("."):
                 break
             idx += 1
-        if color_1st_move_out == "red" and good_move:
+        if status_first_move_out == MoveStatus.FORGET and good_move:
             good_move = Text(f"({good_move[0]}) ")
             good_move.stylize("green", 1, -2)
             moves_str.append(good_move)
