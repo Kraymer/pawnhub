@@ -87,6 +87,13 @@ def categorize_from_repertoire(moves, line):
 
 
 def display_game_moves(game, line):
+    """Return game as serie of moves in short algebric notation.
+
+    Moves present in the repertoire are green.
+    First move outside of repertoire is either yellow if the opponent played
+    or red if it's the user. In the latter case, the correct move
+    (repertoire-wise) is indicated as a variation.
+    """
     moves = numerize_turns(game.moves.split(" "))
 
     moves = moves[:24]
@@ -124,6 +131,8 @@ def display_game_moves(game, line):
 
 
 def find_repertoire_line(game, repertoire):
+    """Return the longest line in the repertoire that has been played in
+    game"""
     res = None
     if repertoire[game.white]:
         res = ""
@@ -142,9 +151,8 @@ def find_repertoire_line(game, repertoire):
 
 
 def display_game(game, repertoire):
-
+    """Add game infos in the table to display"""
     line = find_repertoire_line(game, repertoire)
-    timestamp = game.timestamp
     table.add_row(
         display.COLOR[game.website][game.white],
         display.RESULT[game.result],
@@ -184,6 +192,7 @@ def find(game, search):
 
 
 def display_games(store, search, repertoire, color):
+    """Build and display table of games"""
     table.add_column("Side/site")
     table.add_column("Result")
     table.add_column("Termination")
@@ -201,6 +210,7 @@ def display_games(store, search, repertoire, color):
 
 
 def pgn_split_variants(pgn_path):
+    """Split single pgn file into multiples pgn variants files."""
     out_path = tempfile.NamedTemporaryFile(prefix="pawnhub_").name
     cmd = f"pgn-extract --quiet --splitvariants {pgn_path}"
 
@@ -210,6 +220,10 @@ def pgn_split_variants(pgn_path):
 
 
 def pgn_extract_lines(pgn_path):
+    """Return dict mapping lines to lichess studies
+
+    {'e4 Nf6 e5 Nd5 d4 d6 Nf3': 'https://lichess.org/study/xxxxx', ...}
+    """
     lines = {}
     if pgn_path:
         with open(pgn_path) as pgn:
@@ -223,6 +237,9 @@ def pgn_extract_lines(pgn_path):
 
 
 def build_repertoire(white_pgn_file, black_pgn_file):
+    """Return a dict with two main keys : white lines are accessible under the
+    True key, black lines under the False key.
+    """
     repertoire = {True: {}, False: {}}
     if white_pgn_file:
         repertoire[True] = pgn_extract_lines(pgn_split_variants(white_pgn_file))
