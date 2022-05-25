@@ -20,6 +20,8 @@ from pawnstore.services import parse_game
 
 import display
 
+__version__ = "0.1.0"
+
 APP_TEMP_DIR = os.path.join(tempfile.gettempdir(), "pawnhub")
 
 logger = logging.getLogger(__name__)
@@ -276,9 +278,13 @@ class PathOrUrlType(click.ParamType):
 PATH_OR_URL = PathOrUrlType()
 
 
-@click.command(context_settings=dict(help_option_names=["-h", "--help"]), help="yadda")
-@click.option("-c", "--chesscom_user", default=None)
-@click.option("-l", "--lichess_user", default=None)
+@click.command(
+    context_settings=dict(help_option_names=["-h", "--help"]),
+    help="""List games for CHESSCOM_USER and LICHESS_USER.\n
+Display for each game the first move out of repertoire if WHITE_REP or/and BLACK_REP are given.""",
+)
+@click.option("-c", "--chesscom_user", metavar="CHESSCOM_USER", default=None)
+@click.option("-l", "--lichess_user", metavar="LICHESS_USER", default=None)
 @click.option("--color", default=None, help="Always color terminal output")
 @click.option(
     "-s",
@@ -286,16 +292,14 @@ PATH_OR_URL = PathOrUrlType()
     default=None,
     metavar="FIELD:TEXT",
     callback=rewrite_search,
-    help="Search for text in given field (one of: {}). Omit field to search in whole games data.".format(
-        ", ".join(Game.searchable_fields)
-    ),
+    help="Search for text in given field (see https://kraymer.github.io/pawnhub/#search). Omit field to search in whole games data.",
 )
 @click.option(
     "--rw",
     "white_pgn_file",
     type=PATH_OR_URL,
     # type=click.Path(exists=True),
-    metavar="WHITE_FILE",
+    metavar="WHITE_REP",
     nargs=1,
     help="Path or url to a PGN file for white repertoire",
 )
@@ -303,10 +307,11 @@ PATH_OR_URL = PathOrUrlType()
     "--rb",
     "black_pgn_file",
     type=PATH_OR_URL,
-    metavar="BLACK_FILE",
+    metavar="BLACK_REP",
     nargs=1,
     help="Path or url to a PGN file for black repertoire",
 )
+@click.version_option(__version__)
 def cli(
     chesscom_user=None,
     lichess_user=None,
@@ -314,6 +319,7 @@ def cli(
     color=False,
     white_pgn_file=None,
     black_pgn_file=None,
+    csv=False,
 ):
     if not (chesscom_user or lichess_user):
         click.echo(ctx.get_help() + "\n")
