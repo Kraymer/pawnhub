@@ -215,7 +215,7 @@ def pgn_split_variants(pgn_path):
     cmd = f"pgn-extract --quiet --splitvariants {pgn_path}"
 
     with open(out_path, "w") as outfile:
-        subprocess.run(cmd, stdout=outfile, shell=True)
+        subprocess.run(cmd, stdout=outfile, stderr=subprocess.DEVNULL, shell=True)
     return out_path
 
 
