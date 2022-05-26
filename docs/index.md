@@ -53,3 +53,16 @@ Here, as white, user played an Italian game when—based on his repertoire—he 
 Gold color is used when it is your opponent that brings you into _the unknown_ :
 
 <div class="term-container"> ♟  1  🏳    Danya      <span style="color: #4EFF0F;">1. e4 e5 2. Nf3 Nc6 3. d4</span></span><span style="color: #C4A000;">h6</span> 4. dxe5 g5</div>
+
+### Searching
+
+| Field       | value                                              |
+| ---         | ---                                                |
+| eco         | _ECO code from `A00` to `E99`_                     |
+| eco_name    | eg _Benko Gambit_                                  |
+| moves       | eg _e4 d5 exd5 ..._                                |
+| opp_name    | Opponent name                                      |
+| result      | `W` (win), `L` (loss), `D` (draw)                  |
+| termination | `timeout`, `resigned`, `checkmated`, `abandoned`   |
+| website     | `chess.com`, `lichess.org`                         |
+| white       | `0` (no), `1` (yes)                                |
