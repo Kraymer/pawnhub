@@ -11,30 +11,31 @@ Note: [pgn-extract](https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/) is 
 
 ## Usage
 
-> Usage: pawnhub.py [OPTIONS]
->
->  List games for CHESSCOM_USER and LICHESS_USER.
->
->  Display for each game the first move out of repertoire if WHITE_REP or/and
->  BLACK_REP are given.
->
-> Options:
->  -c, --chesscom_user CHESSCOM_USER
->                                  chess.com user login
->  -l, --lichess_user LICHESS_USER
->                                  lichess.org user login
->  -n, --lines NUM                 Print the NUM most recent games
->  -s, --search [FIELD:]TEXT       Search for text in given field (see
->                                  https://kraymer.github.io/pawnhub/#search).
->                                  Omit FIELD: to search in whole games data.
->  --rw WHITE_REP                  Path or url to a PGN file for white
->                                  repertoire
->  --rb BLACK_REP                  Path or url to a PGN file for black
->                                  repertoire
->  --color                         Always color terminal output
->  --version                       Show the version and exit.
->  -h, --help                      Show this message and exit.
+```text
+Usage: pawnhub.py [OPTIONS]
 
+  List games for CHESSCOM_USER and LICHESS_USER.
+
+  Display for each game the first move out of repertoire if WHITE_REP or/and
+  BLACK_REP are given.
+
+Options:
+  -c, --chesscom_user CHESSCOM_USER
+                                  chess.com user login
+  -l, --lichess_user LICHESS_USER
+                                  lichess.org user login
+  -n, --lines NUM                 Print the NUM most recent games
+  -s, --search [FIELD:]TEXT       Search for text in given field (see
+                                  https://kraymer.github.io/pawnhub/#search).
+                                  Omit FIELD: to search in whole games data.
+  --rw WHITE_REP                  Path or url to a PGN file for white
+                                  repertoire
+  --rb BLACK_REP                  Path or url to a PGN file for black
+                                  repertoire
+  --color                         Always color terminal output
+  --version                       Show the version and exit.
+  -h, --help                      Show this message and exit.
+```
 
 ### Openings heatmap
 
