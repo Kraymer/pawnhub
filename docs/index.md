@@ -11,7 +11,7 @@ Note: [pgn-extract](https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/) is 
 
 ## Usage
 
-~~~
+```
 Usage: pawnhub.py [OPTIONS]
 
   List games for CHESSCOM_USER and LICHESS_USER.
@@ -35,9 +35,9 @@ Options:
   --color                         Always color terminal output
   --version                       Show the version and exit.
   -h, --help                      Show this message and exit.
-~~~ 
+```
 
-### Repertoire heatmap
+### Openings heatmap
 
 Use the `--rw` flag to specify a lichess study as your repertoire with white pieces
 (`--rb` for black).  
@@ -49,6 +49,7 @@ Here, as white, user played an Italian game when—based on his repertoire—he 
  
 <div class="term-container"> ♟  1  ⚰️   Hikaru      <span style="color: #4EFF0F;">1. e4 e5 2. Nf3 Nc6 </span><span style="color: #CC0002;">3. Bc4</span><span style="color: #4EFF0F;"> (d4)</span> Nf6 4. Nc3 Bb4</div>
 
+
 Gold color is used when it is your opponent that brings you into _the unknown_ :
 
-<div class="term-container"> ♟  1  🏳    Danya      <span style="color: #4EFF0F;">1. e4 e5 2. Nf3 Nc6 </span>3. d4</span><span style="color: #C1780F;">h6</span> 4. dxe5 g5</div>
+<div class="term-container"> ♟  1  🏳    Danya      <span style="color: #4EFF0F;">1. e4 e5 2. Nf3 Nc6 3. d4</span></span><span style="color: #C4A000;">h6</span> 4. dxe5 g5</div>
