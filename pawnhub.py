@@ -20,6 +20,8 @@ from pawnstore.services import parse_game
 
 import display
 
+__version__ = "0.1.0"
+
 APP_TEMP_DIR = os.path.join(tempfile.gettempdir(), "pawnhub")
 
 logger = logging.getLogger(__name__)
@@ -191,7 +193,7 @@ def find(game, search):
         return True
 
 
-def display_games(store, search, repertoire, color):
+def display_games(store, search, repertoire, color, lines):
     """Build and display table of games"""
     table.add_column("Side/site")
     table.add_column("Result")
@@ -201,7 +203,7 @@ def display_games(store, search, repertoire, color):
     table.add_column("Time control")
     table.add_column("Opening", style="yellow")
     table.add_column("Moves", no_wrap=False)
-    for game in list(store):
+    for game in list(store)[-lines:]:
         if not search or find(game, search):
             display_game(game, repertoire)
 
@@ -215,7 +217,7 @@ def pgn_split_variants(pgn_path):
     cmd = f"pgn-extract --quiet --splitvariants {pgn_path}"
 
     with open(out_path, "w") as outfile:
-        subprocess.run(cmd, stdout=outfile, shell=True)
+        subprocess.run(cmd, stdout=outfile, stderr=subprocess.DEVNULL, shell=True)
     return out_path
 
 
@@ -276,26 +278,42 @@ class PathOrUrlType(click.ParamType):
 PATH_OR_URL = PathOrUrlType()
 
 
-@click.command(context_settings=dict(help_option_names=["-h", "--help"]), help="yadda")
-@click.option("-c", "--chesscom_user", default=None)
-@click.option("-l", "--lichess_user", default=None)
-@click.option("--color", default=None, help="Always color terminal output")
+@click.command(
+    context_settings=dict(help_option_names=["-h", "--help"]),
+    help="""List games for CHESSCOM_USER and LICHESS_USER.\n
+Display for each game the first move out of repertoire if WHITE_REP or/and BLACK_REP are given.""",
+)
+@click.option(
+    "-c",
+    "--chesscom_user",
+    metavar="CHESSCOM_USER",
+    default=None,
+    help="chess.com user login",
+)
+@click.option(
+    "-l",
+    "--lichess_user",
+    metavar="LICHESS_USER",
+    default=None,
+    help="lichees.org user login",
+)
+@click.option(
+    "-n", "--lines", metavar="NUM", default=0, help="Print the NUM most recent games"
+)
 @click.option(
     "-s",
     "--search",
     default=None,
-    metavar="FIELD:TEXT",
+    metavar="[FIELD:]TEXT",
     callback=rewrite_search,
-    help="Search for text in given field (one of: {}). Omit field to search in whole games data.".format(
-        ", ".join(Game.searchable_fields)
-    ),
+    help="Search for text in given field (see https://kraymer.github.io/pawnhub/#search). Omit FIELD: to search in whole games data.",
 )
 @click.option(
     "--rw",
     "white_pgn_file",
     type=PATH_OR_URL,
     # type=click.Path(exists=True),
-    metavar="WHITE_FILE",
+    metavar="WHITE_REP",
     nargs=1,
     help="Path or url to a PGN file for white repertoire",
 )
@@ -303,10 +321,14 @@ PATH_OR_URL = PathOrUrlType()
     "--rb",
     "black_pgn_file",
     type=PATH_OR_URL,
-    metavar="BLACK_FILE",
+    metavar="BLACK_REP",
     nargs=1,
     help="Path or url to a PGN file for black repertoire",
 )
+@click.option(
+    "--color", default=None, is_flag=True, help="Always color terminal output"
+)
+@click.version_option(__version__)
 def cli(
     chesscom_user=None,
     lichess_user=None,
@@ -314,6 +336,7 @@ def cli(
     color=False,
     white_pgn_file=None,
     black_pgn_file=None,
+    lines=None,
 ):
     if not (chesscom_user or lichess_user):
         click.echo(ctx.get_help() + "\n")
@@ -323,7 +346,7 @@ def cli(
     store = pawnstore(chesscom_user, lichess_user)
     repertoire = build_repertoire(white_pgn_file, black_pgn_file)
 
-    display_games(store, search, repertoire, color)
+    display_games(store, search, repertoire, color, lines)
 
 
 if __name__ == "__main__":
