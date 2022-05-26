@@ -39,4 +39,12 @@ Options:
 
 ### Repertoire heatmap
 
-<div class="term-container"> ♟  1  ⚰️   madhavkuikel      88 5+5  Kings Fianchetto Opening           <span style="color: #ffffaf;">1. g3 d5 2. b4 e5 3. Bg2</span> Nf6 4. e3 Bd7 5. Nf3 e4 6. Ne5 Bxb4 7. c3 Bd6 8. d4 Nc6</div>
+Use the `--rw` flag to specify a lichess study as your repertoire with white pieces
+(`--rb` for black).  
+When doing so, games moves are colored to indicate when you deviated from your
+repertoire lines.
+
+Here as white, user played an Italian game when—based on his repertoire—he was supposed to play a Scotch 
+
+ 
+<div class="term-container"> ♟  1  ⚰️   Hikaru      <span style="color: #4EFF0F;">1. e4 e5 2. Nf3 Nc6 </span><span style="color: #4EFF0F;">3. Bc4</span><span style="color: #4EFF0F;">(d4)</span> Nf6 4. Nc3 Bb4</div>
