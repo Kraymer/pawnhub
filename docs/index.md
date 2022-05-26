@@ -23,7 +23,7 @@ Options:
   -c, --chesscom_user CHESSCOM_USER
                                   chess.com user login
   -l, --lichess_user LICHESS_USER
-                                  lichees.org user login
+                                  lichess.org user login
   -n, --lines NUM                 Print the NUM most recent games
   -s, --search [FIELD:]TEXT       Search for text in given field (see
                                   https://kraymer.github.io/pawnhub/#search).
@@ -38,18 +38,5 @@ Options:
 ~~~ 
 
 ### Repertoire heatmap
-<style>.term-container {
-  background: #171717;
-  border-radius: 5px;
-  color: white;
-  word-break: break-word;
-  overflow-wrap: break-word;
-  font-family: Monaco, courier;
-  font-size: 12px;
-  line-height: 20px;
-  padding: 14px 18px;
-  white-space: pre-wrap;
-}
-</style>
 
 <div class="term-container"> ♟  1  ⚰️   madhavkuikel      88 5+5  Kings Fianchetto Opening           <span style="color: #ffffaf;">1. g3 d5 2. b4 e5 3. Bg2</span> Nf6 4. e3 Bd7 5. Nf3 e4 6. Ne5 Bxb4 7. c3 Bd6 8. d4 Nc6</div>
