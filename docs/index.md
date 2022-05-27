@@ -53,18 +53,24 @@ repertoire lines.
 Here, as white, user played an Italian game when—based on his repertoire—he was supposed to play a Scotch :
 
  
-<div class="term-container"> ♟  1  ⚰️   Hikaru      <span style="color: #4EFF0F;">1. e4 e5 2. Nf3 Nc6 </span><span style="color: #CC0002;">3. Bc4</span><span style="color: #4EFF0F;"> (d4)</span> Nf6 4. Nc3 Bb4 ...</div>
+<div class="term-container"> ♟ <span style="background-color: #4EFF0F;"> 1 </span> ⚰️   Hikaru      <span style="color: #4EFF0F;">1. e4 e5 2. Nf3 Nc6 </span><span style="color: #CC0002;">3. Bc4</span><span style="color: #4EFF0F;"> (d4)</span> Nf6 4. Nc3 Bb4 ...</div>
 
 
 Gold color is used when it is your opponent that brings you into _the unknown_ :
 
-<div class="term-container"> ♟  1  🏳    Danya      <span style="color: #4EFF0F;">1. e4 e5 2. Nf3 Nc6 3. d4</span></span> <span style="color: #C4A000;">h6</span> 4. dxe5 g5 ...</div>
+<div class="term-container"> ♟ <span style="background-color: #4EFF0F;"> 1 </span> 🏳    Danya      <span style="color: #4EFF0F;">1. e4 e5 2. Nf3 Nc6 3. d4</span></span> <span style="color: #C4A000;">h6</span> 4. dxe5 g5 ...</div>
 
 ### Searching
 
+Use the `-s` option to select games to display based on a specific query.
+Indicate on which field to search, followed by the value to match (eg `-s eco:A00`).  
+In most cases, skipping the field to search on whole game data is shorter and produce same results (eg `-s A00`).
+
+Below the existing fields and enumeration of their possible values :
+
 | Field       | value                                              |
 | ---         | ---                                                |
-| eco         | ECO code from `A00` to `E99`                     |
+| eco         | ECO code from `A00` to `E99`                       |
 | eco_name    | eg _Benko Gambit_                                  |
 | moves       | eg _e4 d5 exd5_ ...                                |
 | opp_name    | Opponent name                                      |
