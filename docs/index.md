@@ -6,9 +6,7 @@ Retrieve results of your online chess games from lichess.org and chess.com.
 Instantly see how you negotiated first moves to reach your favourite positions.
 Spot which lines are your kryptonite and lead you to a dry/deceiving middle game.
 
-Pawnhub helps you keep your repertoire up-to-date based on real data in order to improve your mastery of ~~foreplay~~ openings.
-
-![screenshot](_static/screenshot.png)
+Pawnhub helps you keep your repertoire up-to-date based on real data in order to improve your mastery of <s>foreplay</s> openings.
 
 ## Install
 
