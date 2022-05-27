@@ -16,6 +16,7 @@ html_css_files = [
     "css/custom.css",
 ]
 
+html_logo = "_static/logo.png"
 html_theme_options = {
     "logo": "logo.png",
     "github_user": "kraymer",
