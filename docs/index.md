@@ -1,18 +1,20 @@
 # Pawnhub
 
-> “Which do I prefer? Sex or chess? It depends on the position.” -- Boris Spassky
+> _“Which do I prefer? Sex or chess? It depends on the position.”_ -- Boris Spassky
 
 Retrieve results of your online chess games from lichess.org and chess.com.  
 Instantly see how you negotiated first moves to reach your favourite positions.
 Spot which lines are your kryptonite and lead you to a dry/deceiving middle game.
 
-Pawnhub helps you keep your repertoire up-to-date based on real data in order to improve your mastery of ~foreplay~ openings.
+Pawnhub helps you keep your repertoire up-to-date based on real data in order to improve your mastery of ~~foreplay~~ openings.
+
+![screenshot](_static/screenshot.png)
 
 ## Install
 
-pip3 install pawnhub
+`pip3 install pawnhub`
 
-Note: [pgn-extract](https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/) is required if you intend to use the [repertoire heatmap](https://kraymer.github.io/pawnhub/#repertoire-heatmap) feature.
+Note: [pgn-extract](https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/) is required if you intend to use the [openings heatmap](https://kraymer.github.io/pawnhub/#repertoire-heatmap) feature.
 
 ## Usage
 
