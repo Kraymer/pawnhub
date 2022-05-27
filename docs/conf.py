@@ -25,6 +25,6 @@ html_theme_options = {
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
     "**": [
-        "sidebarintro.html",
+        "_templates/sidebarintro.html",
     ]
 }
