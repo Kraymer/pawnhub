@@ -167,30 +167,31 @@ def display_game(game, repertoire):
     )
 
 
-def find(game, search):
+def find(game, searches):
     """Search for string in game data.
 
     search can be free text (whole game search) or formatted as
     field:search to search in a specific field.
     """
-    tokens = search.split(":")
-    field = None
-    if len(tokens) == 2:
-        field = tokens[0]
-    elif len(tokens) > 2:
-        raise Exception("Invalid search")
+    res = True
+    for search in searches:
+        tokens = search.split(":")
+        field = None
+        if len(tokens) == 2:
+            field = tokens[0]
+        elif len(tokens) > 2:
+            raise Exception("Invalid search")
 
-    text = tokens[-1].lower()
+        text = tokens[-1].lower()
 
-    data = ""
-    if field:
-        data = str(getattr(game, field))
-    else:
-        for k, v in game.__data__.items():
-            data += str(v)
-
-    if text in data.lower():
-        return True
+        data = ""
+        if field:
+            data = str(getattr(game, field))
+        else:
+            for k, v in game.__data__.items():
+                data += str(v)
+        res &= text in data.lower()
+    return res
 
 
 def display_games(store, search, repertoire, color, lines):
@@ -250,10 +251,16 @@ def build_repertoire(white_pgn_file, black_pgn_file):
     return repertoire
 
 
-def rewrite_search(ctx, param, value):
-    """Convert to non numerized moves sequence"""
-    if value:
-        return re.sub(r"\d+\.\s", "", value)
+def rewrite_search(ctx, param, values):
+    """Convert values to non numerized moves sequence so that typing
+         --search "1. e4 c5 2. Nf3"
+    is equivalent to
+         --search "e4 c5 Nf3"
+    """
+    res = []
+    for value in values:
+        res.append(re.sub(r"\d+\.\s", "", value))
+    return res
 
 
 class PathOrUrlType(click.ParamType):
@@ -306,6 +313,7 @@ Display for each game the first move out of repertoire if WHITE_REP or/and BLACK
     default=None,
     metavar="[FIELD:]TEXT",
     callback=rewrite_search,
+    multiple=True,
     help="Search for text in given field (see https://kraymer.github.io/pawnhub/#search). Omit FIELD: to search in whole games data.",
 )
 @click.option(
