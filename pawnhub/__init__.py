@@ -341,7 +341,9 @@ Display for each game the first move out of repertoire if WHITE_REP or/and BLACK
     "--color", default=None, is_flag=True, help="Always color terminal output"
 )
 @click.version_option(__version__)
+@click.pass_context
 def pawnhub_cli(
+    ctx,
     chesscom_user=None,
     lichess_user=None,
     search=None,
