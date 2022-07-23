@@ -27,6 +27,8 @@ from pawnhub import display
 __version__ = "0.0.0"
 
 APP_TEMP_DIR = os.path.join(tempfile.gettempdir(), "pawnhub")
+if not os.path.exists(APP_TEMP_DIR):
+    os.mkdir(APP_TEMP_DIR)
 
 logger = logging.getLogger(__name__)
 table = Table(
@@ -352,8 +354,6 @@ def pawnhub_cli(
     black_pgn_file=None,
     lines=None,
 ):
-    if not os.path.exists(APP_TEMP_DIR):
-        os.mkdir(APP_TEMP_DIR)
     if not (chesscom_user or lichess_user):
         click.echo(ctx.get_help() + "\n")
         logger.error("Please provide a username")
