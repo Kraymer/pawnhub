@@ -13,7 +13,6 @@ improve your mastery of <s>foreplay</s> openings.
 
 `pip3 install pawnhub`
 
-Note: [pgn-extract](https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/) is required if you intend to use the [openings heatmap](https://kraymer.github.io/pawnhub/#repertoire-heatmap) feature.
 
 ## Usage
 
@@ -44,6 +43,8 @@ Options:
 ```
 
 ### Openings heatmap
+
+Note: [pgn-extract](https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/) is required to use the this feature.
 
 Use the `--rw` flag to specify a lichess study as your repertoire with white pieces
 (`--rb` for black).  
