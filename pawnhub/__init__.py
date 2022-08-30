@@ -2,6 +2,7 @@
 CLI listing your online chess games results
 """
 
+import click_log
 import logging
 import os
 import click
@@ -26,11 +27,12 @@ from pawnhub import display
 
 __version__ = "0.0.0"
 
+
 APP_TEMP_DIR = os.path.join(tempfile.gettempdir(), "pawnhub")
 if not os.path.exists(APP_TEMP_DIR):
     os.mkdir(APP_TEMP_DIR)
-
 logger = logging.getLogger(__name__)
+click_log.basic_config(logger)
 table = Table(
     collapse_padding=True,
     expand=True,
@@ -224,7 +226,13 @@ def pgn_split_variants(pgn_path):
     cmd = f"pgn-extract --quiet --splitvariants {pgn_path}"
 
     with open(out_path, "w") as outfile:
-        subprocess.run(cmd, stdout=outfile, stderr=subprocess.DEVNULL, shell=True)
+        res = subprocess.run(cmd, stdout=outfile, stderr=subprocess.DEVNULL, shell=True)
+        if res.returncode == 127:
+            logger.error(
+                """pgn-extract is required by the openings heatmap feature (--rw and --rb flags). 
+Please download binary from https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/"""
+            )
+            exit(1)
     return out_path
 
 
