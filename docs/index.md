@@ -44,7 +44,9 @@ Options:
 
 ### Openings heatmap
 
+```{note}
 Note: [pgn-extract](https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/) is required to use the this feature.
+```
 
 Use the `--rw` flag to specify a lichess study as your repertoire with white pieces
 (`--rb` for black).  
