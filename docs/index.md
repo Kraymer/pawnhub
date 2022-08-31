@@ -30,13 +30,11 @@ Options:
   -l, --lichess_user LICHESS_USER
                                   lichess.org user login
   -n, --lines NUM                 Print the NUM most recent games
-  -s, --search [FIELD:]TEXT       Search for text in given field (see
-                                  https://kraymer.github.io/pawnhub/#search).
+  -s, --search [FIELD:]TEXT       Search for text in given field (cf
+                                  [Searching](https://pawnhub.readthedocs.io/en/latest/#searching).
                                   Omit FIELD: to search in whole games data.
-  --rw WHITE_REP                  Path or url to a PGN file for white
-                                  repertoire
-  --rb BLACK_REP                  Path or url to a PGN file for black
-                                  repertoire
+  --rw WHITE_REP                  Path or url to a PGN file for white repertoire
+  --rb BLACK_REP                  Path or url to a PGN file for black repertoire
   --color                         Always color terminal output
   --version                       Show the version and exit.
   -h, --help                      Show this message and exit.
@@ -48,10 +46,11 @@ Options:
 [pgn-extract](https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/) is required to use this feature.
 ```
 
+If you have your repertoire lines stored in lichess studies[^lichess-study] then your games moves can be colored to indicate when you deviated from your
+theoric lines.
 Use the `--rw` flag to specify a lichess study as your repertoire with white pieces
 (`--rb` for black).  
-When doing so, games moves are colored to indicate when you deviated from your
-repertoire lines.
+
 
 Here, as white, user played an Italian game when—based on his repertoire—he was supposed to play a Scotch :
 
@@ -81,3 +80,6 @@ Below the existing fields and enumeration of their possible values :
 | termination | `timeout`, `resigned`, `checkmated`, `abandoned`   |
 | website     | `chess.com`, `lichess.org`                         |
 | white       | `0` (no), `1` (yes)                                |
+
+
+[^lichess-study]: cf https://lichess.org/study/search?q=repertoire for examples of studies used as repertoires
