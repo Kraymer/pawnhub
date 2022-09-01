@@ -29,10 +29,22 @@ __version__ = "0.0.0"
 
 
 APP_TEMP_DIR = os.path.join(tempfile.gettempdir(), "pawnhub")
+ERR_PGN_EXTRACT_INSTALL = """pgn-extract is required by the openings heatmap feature (--rw and --rb flags). 
+Please download binary from https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/
+"""
+ERR_LICHESS_API_KEY = """Lichess api key is required, you can create one at https://lichess.org/account/oauth/token
+Then declare it via the shell command
+    export LICHESS_API_TOKEN=your_key
+"""
+ERR_MISSING_USERNAME = """Please provide a username.
+Try 'pawnhub --help' for more information.
+"""
+
 if not os.path.exists(APP_TEMP_DIR):
     os.mkdir(APP_TEMP_DIR)
 logger = logging.getLogger(__name__)
 click_log.basic_config(logger)
+
 table = Table(
     collapse_padding=True,
     expand=True,
@@ -228,10 +240,7 @@ def pgn_split_variants(pgn_path):
     with open(out_path, "w") as outfile:
         res = subprocess.run(cmd, stdout=outfile, stderr=subprocess.DEVNULL, shell=True)
         if res.returncode == 127:
-            logger.error(
-                """pgn-extract is required by the openings heatmap feature (--rw and --rb flags). 
-Please download binary from https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/"""
-            )
+            logger.error(ERR_PGN_EXTRACT_INSTALL)
             exit(1)
     return out_path
 
@@ -363,10 +372,11 @@ def pawnhub_cli(
     lines=None,
 ):
     if not (chesscom_user or lichess_user):
-        click.echo(ctx.get_help() + "\n")
-        logger.error("Please provide a username")
+        logger.error(ERR_MISSING_USERNAME)
         exit(1)
-
+    if lichess_user and "LICHESS_API_TOKEN" not in os.environ:
+        logger.error(ERR_LICHESS_API_KEY)
+        exit(1)
     store = pawnstore(chesscom_user, lichess_user)
     repertoire = build_repertoire(white_pgn_file, black_pgn_file)
 
