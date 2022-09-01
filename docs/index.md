@@ -40,6 +40,8 @@ Options:
   -h, --help                      Show this message and exit.
 ```
 
+## Features
+
 ### Openings heatmap
 
 ```{note}
