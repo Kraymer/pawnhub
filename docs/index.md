@@ -2,13 +2,13 @@
 
 > _“Which do I prefer? Sex or chess? It depends on the position.”_ -- Boris Spassky
 
-> **PH** *n.* 1. popular website with people mating in different positions 2. terminal chess database client to review your own games and update your repertoire accordingly
+> **PH** *noun.* 1. popular website with people mating in different positions 2. terminal chess database client to review your own games and update your repertoire accordingly
 
 ## Features
 
 - One centralized database : your go-to terminal command to have an overview of your chess games results whether online or OTB
-- Searching : easy yet powerful filtering capabilities to focus your analysis on subset of games (lost, white pieces, sicilians, etc)
-- Openings heatmap : possible to specify your repertoire via lichess etudes and visualize which lines gives best/worse results based on your games data
+- [Searching](https://pawnhub.readthedocs.io/en/latest/index.html#searching) : easy yet powerful filtering capabilities to focus your analysis on subset of games (lost, white pieces, sicilians, etc)
+- [Openings heatmap](https://pawnhub.readthedocs.io/en/latest/index.html#openings-heatmap) : possible to specify your repertoire via lichess etudes and visualize which lines gives best/worse results based on your games data
 
 ## Install
 
@@ -65,7 +65,7 @@ Below the existing fields and enumeration of their possible values :
 ### Openings heatmap
 
 ```{note}
-[pgn-extract](https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/) is required to use this feature.
+[pgn-extract](https://www.cs.kent.ac.uk/people/staff/djb/pgn-extract/) tool is required to use this feature.
 ```
 
 If you have your repertoire lines stored in lichess studies[^lichess-study] then your games moves can be colored to indicate when you deviated from your
