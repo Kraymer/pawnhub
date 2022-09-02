@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.1 (2022-09-02)
+### Fix
+* Reduce tox dependency ([`3f395ee`](https://github.com/Kraymer/pawnhub/commit/3f395ee6797d2e07b9c810147e8c79b0dcaf9b19))
+
 ## v0.1.0 (2022-09-02)
 ### Feature
 * Display error message when pgn-extract is required but missing ([#6](https://github.com/Kraymer/pawnhub/issues/6)) ([`c504c93`](https://github.com/Kraymer/pawnhub/commit/c504c930123a05e3bfc5ab3b4d583d19c6b24df0))
