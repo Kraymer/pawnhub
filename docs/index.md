@@ -82,6 +82,7 @@ Gold color is used when it is your opponent that brings you into _the unknown_ :
 
 <div class="term-container"> ♟ <span style="background-color: #005F00;"> 1 </span> 🏳    Danya      <span style="color: #005F00;">1. e4 e5 2. Nf3 Nc6 3. d4</span></span> <span style="color: #C4A000;">h6</span> 4. dxe5 g5 ...</div>
 
+
 So the longest green streak the better.  
 Hitting a gold move early is a sign that you should add data to your repertoire etude to stay in the theory.  
 Whereas red means you haven't memorized your repertoire lines.
