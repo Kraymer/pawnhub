@@ -43,6 +43,7 @@ setup(
     license="MIT",
     platforms="ALL",
     packages=[PKG_NAME],
+    entry_points={"console_scripts": ["pawnhub = pawnhub:pawnhub_cli"]},
     install_requires=read_rsrc("requirements.txt").split("\n"),
     python_requires=">=3.6",
     extras_require={
