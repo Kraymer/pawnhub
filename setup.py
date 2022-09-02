@@ -50,7 +50,6 @@ setup(
         "test": [
             "coverage>5",
             "pytest>=6",
-            "tox>=3",
         ]
     },
     classifiers=[
