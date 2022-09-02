@@ -69,14 +69,12 @@ Below the existing fields and enumeration of their possible values :
 ```
 
 If you have your repertoire lines stored in lichess studies[^lichess-study] then your games moves can be colored to indicate when you deviated from your
-theoric lines.
+theorical lines.
 Use the `--rw` flag to specify a lichess study as your repertoire with white pieces
 (`--rb` for black).  
 
-
 Here, as white, user played an Italian game when—based on his repertoire—he was supposed to play a Scotch :
 
- 
 <div class="term-container"> ♟ <span style="background-color: #005F00;"> 1 </span> ⚰️   Hikaru      <span style="color: #005F00;">1. e4 e5 2. Nf3 Nc6 </span><span style="color: #CC0002;">3. Bc4</span><span style="color: #005F00;"> (d4)</span> Nf6 4. Nc3 Bb4 ...</div>
 
 
@@ -84,6 +82,9 @@ Gold color is used when it is your opponent that brings you into _the unknown_ :
 
 <div class="term-container"> ♟ <span style="background-color: #005F00;"> 1 </span> 🏳    Danya      <span style="color: #005F00;">1. e4 e5 2. Nf3 Nc6 3. d4</span></span> <span style="color: #C4A000;">h6</span> 4. dxe5 g5 ...</div>
 
+So the longest green streak the better.  
+Hitting a gold move early is a sign that you should add data to your repertoire etude to stay in the theory.  
+Whereas red means you haven't memorized your repertoire lines.
 
 
 [^lichess-study]: cf https://lichess.org/study/search?q=repertoire for examples of studies used as repertoires
