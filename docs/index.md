@@ -69,7 +69,7 @@ Below the existing fields and enumeration of their possible values :
 ```
 
 If you have your repertoire lines stored in lichess studies[^lichess-study] then your games moves can be colored to indicate when you deviated from your
-theorical lines.
+theoretical lines.
 Use the `--rw` flag to specify a lichess study as your repertoire with white pieces
 (`--rb` for black).  
 
