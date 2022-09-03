@@ -26,6 +26,10 @@ into a local database then make them
 
 [![asciicast](https://asciinema.org/a/518641.svg)](https://asciinema.org/a/518641)
 
+## Install
+
+`pip3 install pawnhub`
+
 ## Usage
 
     Usage: pawnhub.py [OPTIONS]  
