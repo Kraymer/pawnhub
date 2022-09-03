@@ -4,6 +4,8 @@
 
 > **PH** *noun.* 1. popular website with people mating in different positions 2. terminal chess database client to review your own games and update your repertoire accordingly
 
+<script id="asciicast-518641" src="https://asciinema.org/a/518641.js" async></script>
+
 ## Features
 
 - One centralized database : your go-to terminal command to have an overview of your chess games results whether online or OTB
