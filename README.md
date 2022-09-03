@@ -22,9 +22,9 @@ into a local database then make them
 
 **Read documentation at https://pawnhub.readthedocs.io/**
 
-## Screenshot
+## Screencast
 
-![image](https://github.com/Kraymer/pawnhub/raw/docs/docs/_static/screenshot.png)
+[![asciicast](https://asciinema.org/a/518641.svg)](https://asciinema.org/a/518641)
 
 ## Usage
 
