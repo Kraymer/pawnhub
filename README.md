@@ -28,7 +28,7 @@ into a local database then make them
 
 ## Install
 
-`pip3 install pawnhub`
+`pawnhub` is written for Python 3.7+, install with pip via ``pip3 install pawnhub`` command.
 
 ## Usage
 
