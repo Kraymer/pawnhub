@@ -62,7 +62,7 @@ Below the existing fields and enumeration of their possible values :
 | result      | `W` (win), `L` (loss), `D` (draw)                  |
 | termination | `timeout`, `resigned`, `checkmated`, `abandoned`   |
 | website     | `chess.com`, `lichess.org`                         |
-| white       | `0` (no), `1` (yes)                                |
+| white       | `false` (no), `true` (yes)                                |
 
 ### Openings heatmap
 
