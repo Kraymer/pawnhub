@@ -25,7 +25,7 @@ from pawnstore.services import parse_game
 
 from pawnhub import display
 
-__version__ = "0.1.1"
+__version__ = "0.2.0"
 
 
 APP_TEMP_DIR = os.path.join(tempfile.gettempdir(), "pawnhub")
