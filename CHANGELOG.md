@@ -4,7 +4,7 @@
 
 ## v0.2.0 (2022-09-05)
 ### Feature
-* Upgrade pawnstore dependency to 0.2.0 ([`65b0d67`](https://github.com/Kraymer/pawnhub/commit/65b0d677a14029ce0bac2547950954185ab4e5db))
+* Import games by batch of 1000 ([`65b0d67`](https://github.com/Kraymer/pawnhub/commit/65b0d677a14029ce0bac2547950954185ab4e5db))
 
 ## v0.1.1 (2022-09-02)
 ### Fix
