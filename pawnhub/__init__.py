@@ -161,6 +161,7 @@ def find_repertoire_line(game, repertoire):
     """Return the longest line in the repertoire that has been played in
     game"""
     res = None
+
     if repertoire[game.white]:
         res = ""
 
@@ -177,7 +178,7 @@ def find_repertoire_line(game, repertoire):
     return res
 
 
-def display_game(game, repertoire):
+def display_game(game, repertoire, single_source):
     """Add game infos in the table to display"""
     line = find_repertoire_line(game, repertoire)
     table.add_row(
@@ -185,7 +186,7 @@ def display_game(game, repertoire):
         display.RESULT[game.result],
         display.TERMINATION.get(game.termination, ""),
         display.as_link(game.opp_name[:17], game.slug),
-        display.as_int(game.accuracy),
+        display.as_int(game.accuracy) if single_source else None,
         game.time_control,
         display.as_link(game.eco_name[:44], repertoire[game.white].get(line, "?")),
         display_game_moves(game, line),
@@ -219,7 +220,7 @@ def find(game, searches):
     return res
 
 
-def display_games(store, search, repertoire, color, lines):
+def display_games(store, search, repertoire, color, lines, single_source):
     """Build and display table of games"""
     table.add_column("Side/site")
     table.add_column("Result")
@@ -231,7 +232,7 @@ def display_games(store, search, repertoire, color, lines):
     table.add_column("Moves", no_wrap=False)
     for game in list(store)[-lines:]:
         if not search or find(game, search):
-            display_game(game, repertoire)
+            display_game(game, repertoire, single_source)
 
     console = Console(force_terminal=color)
     console.print(table)
@@ -388,5 +389,5 @@ def pawnhub_cli(
         exit(1)
     store = pawnstore(chesscom_user, lichess_user)
     repertoire = build_repertoire(white_pgn_file, black_pgn_file)
-
-    display_games(store, search, repertoire, color, lines)
+    single_source = not (chesscom_user and lichess_user)
+    display_games(store, search, repertoire, color, lines, single_source)
