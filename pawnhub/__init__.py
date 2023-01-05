@@ -12,7 +12,7 @@ import shutil
 import subprocess
 import random
 
-from enum import Enum
+from enum import Enum, Flag
 
 import chess.pgn
 import requests
@@ -55,6 +55,11 @@ table = Table(
     show_lines=False,
     box=None,
 )
+
+
+class Side(Flag):
+    WHITE = True
+    BLACK = False
 
 
 class MoveStatus(Enum):
@@ -266,11 +271,15 @@ def build_repertoire(white_pgn_file, black_pgn_file):
     """Return a dict with two main keys : white lines are accessible under the
     True key, black lines under the False key.
     """
-    repertoire = {True: {}, False: {}}
+    repertoire = {bool(Side.WHITE): {}, bool(Side.BLACK): {}}
     if white_pgn_file:
-        repertoire[True] = pgn_extract_lines(pgn_split_variants(white_pgn_file))
+        repertoire[bool(Side.WHITE)] = pgn_extract_lines(
+            pgn_split_variants(white_pgn_file)
+        )
     if black_pgn_file:
-        repertoire[False] = pgn_extract_lines(pgn_split_variants(black_pgn_file))
+        repertoire[bool(Side.BLACK)] = pgn_extract_lines(
+            pgn_split_variants(black_pgn_file)
+        )
     return repertoire
 
 
