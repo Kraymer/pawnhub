@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.0 (2023-08-31)
+
+### Feature
+
+* Display accuracy column only when we have homogeneous data ([`e59383e`](https://github.com/Kraymer/pawnhub/commit/e59383e8358456f3a0846f41cc502795beebc2d6))
+
 ## v0.2.0 (2022-09-05)
 ### Feature
 * Import games by batch of 1000 ([`65b0d67`](https://github.com/Kraymer/pawnhub/commit/65b0d677a14029ce0bac2547950954185ab4e5db))
