@@ -2,4 +2,4 @@ click
 click_log
 confuse
 rich
-pawnstore==0.2.0
+pawnstore==0.2.2
